@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>ResumeLens: check your resume against any job</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;600;800&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="/style.css">
+</head>
+<body>
+<header class="top">
+  <div class="brand">ResumeLens</div>
+  <h1>Does your resume fit the job?</h1>
+  <p>Upload a resume, paste a job description, and get a fit score, a comparison tool, and interview prep for that company.</p>
+</header>
+
+<div class="layout">
+  <nav class="rail" aria-label="Progress">
+    <ol>
+      <li id="n1" class="active"><span>1</span>Resume</li>
+      <li id="n2"><span>2</span>Job fit</li>
+      <li id="n3"><span>3</span>Compare</li>
+      <li id="n4"><span>4</span>Interview</li>
+    </ol>
+  </nav>
+
+  <main>
+    <section class="panel" id="p1">
+      <h2>Your resume</h2>
+      <label class="drop" id="drop">
+        <input type="file" id="file" accept=".pdf,.docx,.txt,.md" hidden>
+        <strong id="fname">Choose a PDF, DOCX or TXT file</strong>
+        <span>or drag it here. Max 5 MB.</span>
+      </label>
+      <textarea id="text" placeholder="Or paste your resume text here"></textarea>
+      <div class="actions"><button id="b1">Analyze resume</button><span class="status" id="s1" role="status"></span></div>
+      <div id="r1"></div>
+    </section>
+
+    <section class="panel locked" id="p2">
+      <h2>Target job</h2>
+      <div class="two">
+        <input type="text" id="company" placeholder="Company, e.g. Infosys">
+        <input type="text" id="role" placeholder="Role, e.g. AI Engineer">
+      </div>
+      <textarea id="jd" placeholder="Paste the full job description"></textarea>
+      <div class="actions"><button id="b2">Check my fit</button><span class="status" id="s2" role="status"></span></div>
+      <div id="r2"></div>
+    </section>
+
+    <section class="panel locked" id="p3">
+      <h2>Compare an edited resume</h2>
+      <p class="hint" id="h3cmp">Improved your resume based on the feedback above? Upload the new version to see both scores side by side, for the same job.</p>
+      <label class="drop" id="dropB">
+        <input type="file" id="fileB" accept=".pdf,.docx,.txt,.md" hidden>
+        <strong id="fnameB">Choose the edited resume (PDF, DOCX or TXT)</strong>
+        <span>or drag it here. Max 5 MB.</span>
+      </label>
+      <div class="actions"><button id="b3cmp">Compare versions</button><span class="status" id="s3cmp" role="status"></span></div>
+      <div id="r3cmp"></div>
+    </section>
+
+    <section class="panel locked" id="p4">
+      <h2>Interview preparation</h2>
+      <p class="hint" id="h4">Unlocks when your fit score is 60 or higher.</p>
+      <div class="actions" id="a4" hidden><button id="b4">Generate interview prep</button><span class="status" id="s4" role="status"></span></div>
+      <div id="r4"></div>
+
+      <div id="realq-wrap" hidden>
+        <h3>Real questions, found online</h3>
+        <p class="hint">Pulled from candidate reports on Glassdoor, AmbitionBox and similar sites, not generated. Each one links to its source.</p>
+        <div class="actions"><button id="brq">Search for real questions</button><span class="status" id="srq" role="status"></span></div>
+        <div id="rrq"></div>
+      </div>
+
+      <div id="realskills-wrap" hidden>
+        <h3>Real requirements, found online</h3>
+        <p class="hint">Pulled from GeeksforGeeks, Indeed and similar sites, not generated. Checked against your actual resume.</p>
+        <div class="actions"><button id="brsk">Check real requirements</button><span class="status" id="srsk" role="status"></span></div>
+        <div id="rrsk"></div>
+      </div>
+    </section>
+  </main>
+</div>
+<script src="/app.js"></script>
+</body>
+</html>
